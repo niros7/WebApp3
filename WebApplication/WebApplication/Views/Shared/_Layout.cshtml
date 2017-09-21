@@ -40,6 +40,7 @@
                         <a class="nav-link" href="contact.html">Contact</a>
                     </li>
                 </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </nav>
@@ -112,5 +113,6 @@
     <script src="~/Scripts/popper.min.js"></script>
     <script src="~/Vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/Scripts/clean-blog.min.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
