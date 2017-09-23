@@ -4,7 +4,6 @@
     {
         public int CommentId { get; set; }
         public string Title { get; set; }
-        public string SiteUrl { get; set; }
         public string Description { get; set; }
 
         public ApplicationUser CommentUser { get; set; }
