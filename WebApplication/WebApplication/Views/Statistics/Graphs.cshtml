@@ -32,7 +32,6 @@ svg text.percent{
 
 </style>
 <body>
-<button onClick="changeData()">Change Data</button>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="@Url.Content("~/Content/Donut3D.js")"></script>
 <script>
@@ -63,8 +62,9 @@ d3.json("MyAction", function (data) {
     Donut3D.draw("quotesDonut", valuedData, 450, 150, 130, 100, 30, 0);
 });
 
-//Donut3D.draw("salesDonut", randomData(), 150, 150, 130, 100, 30, 0.4);
-//Donut3D.draw("quotesDonut", randomData(), 450, 150, 130, 100, 30, 0);
+/*
+Donut3D.draw("salesDonut", randomData(), 150, 150, 130, 100, 30, 0.4);
+Donut3D.draw("quotesDonut", randomData(), 450, 150, 130, 100, 30, 0);
 	
 function changeData(){
 	Donut3D.transition("salesDonut", randomData(), 130, 100, 30, 0.4);
@@ -76,5 +76,6 @@ function randomData() {
 	return data.map(function(d){ 
 		return {label:d.label, value:1000*Math.random(), color:d.color};});
 }
+*/
 </script>
 </body>
