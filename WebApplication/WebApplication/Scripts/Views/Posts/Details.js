@@ -31,4 +31,3 @@ $('#commentDesc').bind('input propertychange', function () {
         $("#saveComment").show();
     }
 });
-

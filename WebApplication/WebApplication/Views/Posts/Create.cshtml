@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "Blog";
 }
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 <div class="card my-4">
     <h5 class="card-header">Create A Post:</h5>
     <div class="card-body">
@@ -11,6 +13,9 @@
         </div>
         <div class="form-group">
             <input type="text" placeholder="SubTitle..." id="postSubTitle" class="form-control" maxlength="100">
+        </div>
+        <div class="chips">
+            <i class="material-icons close">close</i>
         </div>
         <div class="form-group">
             <textarea placeholder="Write here..." id="postDescription" class="form-control" rows="3" maxlength="1000"></textarea>
