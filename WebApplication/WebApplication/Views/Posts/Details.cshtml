@@ -1,0 +1,60 @@
+﻿@model WebApplication.Models.Post
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="col-lg-12">
+    <div class="post-preview">
+        <a>
+            <h2 class="post-title">
+                @Model.Title
+            </h2>
+            <h3 class="post-subtitle">
+                @Model.SubTitle
+            </h3>
+        </a>
+        <p class="post-meta">
+            Posted by
+            <a href="#">@Model.Author.Email</a>
+            on @Model.CreationDate
+        </p>
+    </div>
+    <hr />
+    <h4>
+        @Model.Description
+    </h4>
+    <hr />
+
+
+
+    <h3 class="post-title">
+        Comments:
+    </h3>
+    @foreach (var comment in Model.Comments)
+    {
+        <div class="media mb-4">
+            <div class="media-body">
+                <h5 class="mt-0">@comment.CommentUser.Email</h5>
+                @comment.Description
+            </div>
+            <i data-id="@comment.CommentId" class="fa fa-trash" aria-hidden="true"></i>
+        </div>
+    }
+
+    @if (Request.IsAuthenticated)
+    {
+        <div class="card my-4">
+            <h5 class="card-header">Leave a Comment:</h5>
+            <div class="card-body">
+                <div>
+                    <div class="form-group">
+                        <textarea id="commentDesc" class="form-control" rows="3" maxlength="200"></textarea>
+                    </div>
+                    <button data-id="@Model.Id" id="saveComment" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script src="~/Scripts/Views/Posts/Details.js"></script>

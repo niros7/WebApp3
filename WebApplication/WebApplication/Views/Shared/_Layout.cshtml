@@ -9,12 +9,13 @@
     <link href="~/Vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    @Scripts.Render("~/Vendor/jquery/jquery.min.js");
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+            <a class="navbar-brand" href="/">Blog</a>
             <button class="navbar-toggler navbar-toggler-right"
                     type="button"
                     data-toggle="collapse"
@@ -28,23 +29,16 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="post.html">Sample Post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="/Posts/Create">Create</a>
                     </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </nav>
-
     <!-- Page Header -->
     <header class="masthead" style="background-image: url(@Url.Content("~/Content/Images/home-bg.jpg"))">
         <div class="container">
@@ -52,7 +46,7 @@
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
                         <h1>Clean Blog</h1>
-                        <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                        <span class="subheading">A Blog To Start The Day With</span>
                     </div>
                 </div>
             </div>
@@ -60,17 +54,7 @@
     </header>
     <!-- Main Content -->
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                @RenderBody()
-            </div>
-
-            @*<hr>
-                 Pager
-                <div class="clearfix">
-                    <a class="btn btn-secondary float-right" href="#">Older Posts &rarr;</a>
-                </div>*@
-        </div>
+        @RenderBody()
     </div>
     <hr>
     <!-- Footer -->
@@ -108,17 +92,16 @@
                 </div>
             </div>
         </div>
-        <div class ="row justify-content-md-center">
-        <a href="https://www.accuweather.com/en/il/tel-aviv/215854/weather-forecast/215854" class="aw-widget-legal">
-        </a>
-<div class ="col col-md-10">
-    <div id="awcc1506015144546" class="aw-widget-current"  data-locationkey="215854" data-unit="c" data-language="en-us" data-useip="false" data-uid="awcc1506015144546"></div>
-</div>
+        <div class="row justify-content-md-center">
+            <a href="https://www.accuweather.com/en/il/tel-aviv/215854/weather-forecast/215854" class="aw-widget-legal">
+            </a>
+            <div class="col col-md-10">
+                <div id="awcc1506015144546" class="aw-widget-current" data-locationkey="215854" data-unit="c" data-language="en-us" data-useip="false" data-uid="awcc1506015144546"></div>
+            </div>
         </div>
     </footer>
     <!--Weather js -->
     <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
-    <script src="~/Vendor/jquery/jquery.min.js"></script>
     <script src="~/Scripts/popper.min.js"></script>
     <script src="~/Vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/Scripts/clean-blog.min.js"></script>
