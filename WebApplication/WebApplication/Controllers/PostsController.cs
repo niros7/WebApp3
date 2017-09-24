@@ -21,16 +21,50 @@ namespace WebApplication.Controllers
         // GET: Posts
         public ActionResult Index()
         {
-            var postsTitles = db.Posts.OrderByDescending(p => p.CreationDate).Select(post => new PostTitle
-            {
-                Title = post.Title,
-                SubTitle = post.SubTitle,
-                CreationDate = post.CreationDate,
-                UserEmail = post.Author.Email,
-                PostTitleId = post.Id
+            List<PostTitle> postsToReturn = new List<PostTitle>();
 
-            });
-            return View(postsTitles);
+            if (User.Identity.IsAuthenticated)
+            {
+                var currentUserId = User.Identity.GetUserId();
+                var currentUserTags = db.Posts.Include(path => path.PostTags).Include(p => p.Author).Where(p => p.Author.Id == currentUserId).Select(p => p.PostTags).First();
+
+                var y = db.Posts.Include(path => path.PostTags).Include(p => p.Author).ToList();
+
+                var bestPosts = db.Posts.Include(post => post.PostTags).Select(p => new
+                {
+                    postId = p.Id,
+                    matchCount = currentUserTags.Intersect(p.PostTags).Count()
+                })
+                .OrderByDescending(x => x.matchCount).ToList();
+
+                foreach (var item in bestPosts)
+                {
+                    postsToReturn.AddRange(db.Posts.Where(p => p.Id == item.postId).Select(post => new PostTitle
+                    {
+                        Title = post.Title,
+                        SubTitle = post.SubTitle,
+                        CreationDate = post.CreationDate,
+                        UserEmail = post.Author.Email,
+                        PostTitleId = post.Id
+
+                    }).ToList());
+                }
+
+            }
+            else
+            {
+                postsToReturn = db.Posts.OrderByDescending(p => p.CreationDate).Select(post => new PostTitle
+                {
+                    Title = post.Title,
+                    SubTitle = post.SubTitle,
+                    CreationDate = post.CreationDate,
+                    UserEmail = post.Author.Email,
+                    PostTitleId = post.Id
+
+                }).ToList();
+            }
+
+            return View(postsToReturn);
         }
 
         // GET: Posts/Details/5
@@ -40,7 +74,8 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Include(p => p.Author).Include(p => p.Comments).Where(p => p.Id == id.Value).First();
+            Post post = db.Posts.Include(p => p.Author).Where(p => p.Id == id.Value).First();
+            post.Comments = db.Commnets.Where(c => c.ReferencedPost.Id == id.Value).Include(c => c.CommentUser).ToList();
 
             if (post == null)
             {
@@ -88,6 +123,7 @@ namespace WebApplication.Controllers
             var post = new Post();
             if (ModelState.IsValid)
             {
+                post.PostTags = createPost.Tags.Select(x => new Tag { TagTitle = x }).ToList();
                 post.Title = createPost.Title;
                 post.SubTitle = createPost.SubTitle;
                 post.Description = createPost.Description;

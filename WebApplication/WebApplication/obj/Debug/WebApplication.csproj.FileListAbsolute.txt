@@ -94,6 +94,7 @@ c:\users\nirha\documents\visual studio 2017\Projects\WebApplication\WebApplicati
 c:\users\nirha\documents\visual studio 2017\Projects\WebApplication\WebApplication\obj\Debug\WebApplication.csprojResolveAssemblyReference.cache
 c:\users\nirha\documents\visual studio 2017\Projects\WebApplication\WebApplication\obj\Debug\WebApplication.dll
 c:\users\nirha\documents\visual studio 2017\Projects\WebApplication\WebApplication\obj\Debug\WebApplication.pdb
+<<<<<<< HEAD
 C:\WebAppRepo\WebApplication\WebApplication\bin\ApplicationInsights.config
 C:\WebAppRepo\WebApplication\WebApplication\bin\roslyn\csc.exe
 C:\WebAppRepo\WebApplication\WebApplication\bin\roslyn\csc.exe.config
@@ -302,3 +303,5 @@ C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\W
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.pdb
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\bin\WebApplication.dll.config
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.csproj.CoreCompileInputs.cache
+=======
+>>>>>>> 167ad52f6f6a4aceb80a72bd5575edc06b8ad080
