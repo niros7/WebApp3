@@ -44,7 +44,7 @@
 
     function getPercent(d) {
         return (d.endAngle - d.startAngle > 0.2 ?
-				Math.round(1000 * (d.endAngle - d.startAngle) / (Math.PI * 2)) / 10 + '%' : '');
+            d.data.label + ': ' + Math.round(1000 * (d.endAngle - d.startAngle) / (Math.PI * 2)) / 10 + '%' : '');
     }
 
     Donut3D.transition = function (id, data, rx, ry, h, ir) {

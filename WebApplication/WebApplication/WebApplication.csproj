@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -214,6 +215,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\GraphGroup.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -339,12 +341,9 @@
     <Content Include="Vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="Vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Vendor\font-awesome\scss\_variables.scss" />
-<<<<<<< HEAD
     <Content Include="Views\Statistics\Graphs.cshtml" />
-=======
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\Posts\Create.cshtml" />
->>>>>>> 7949eda444639a447b1a4cd574dfd0ca1ae817c9
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
