@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -203,6 +204,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -213,6 +215,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\GraphGroup.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -227,6 +230,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\clean-blog.min.css" />
+    <Content Include="Content\Donut3D.js" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Images\home-bg.jpg" />
     <Content Include="Scripts\clean-blog.min.js" />
@@ -269,6 +273,7 @@
     <Content Include="Vendor\jquery\jquery.min.js" />
     <Content Include="Vendor\popper\popper.js" />
     <Content Include="Vendor\popper\popper.min.js" />
+    <Content Include="Views\Statistics\Donut3D.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -336,6 +341,7 @@
     <Content Include="Vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="Vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Views\Statistics\Graphs.cshtml" />
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\Posts\Create.cshtml" />
   </ItemGroup>
