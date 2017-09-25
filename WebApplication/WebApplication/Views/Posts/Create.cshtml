@@ -5,7 +5,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-<div class="card my-4">
+<div class="card my-4" onload="initialize()">
     <h5 class="card-header">Create A Post:</h5>
     <div class="card-body">
         <div class="form-group">
@@ -20,7 +20,22 @@
         <div class="form-group">
             <textarea placeholder="Write here..." id="postDescription" class="form-control" rows="3" maxlength="1000"></textarea>
         </div>
+        <div class="form-group">
+            <input id="address" placeholder="type your address" type="text" value="">
+            <input type="button" value="PostLocation" onclick="codeAddress()">
+            <input type="number" placeholder="lat" id="lat" class="form-control">
+            <input type="number" placeholder="lng" id="lng" class="form-control">
+        </div>
         <button id="savePost" class="btn btn-primary">Submit</button>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        initialize();
+    });
+</script>
+<script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvvjKzajNkWf0Ac79uOgy6Eh-MzUG-kcw&callback=initMap">
+</script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <script src="~/Scripts/Views/Posts/Create.js"></script>
