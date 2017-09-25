@@ -210,9 +210,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201709231048101_manyToOne.cs" />
-    <Compile Include="Migrations\201709231048101_manyToOne.Designer.cs">
-      <DependentUpon>201709231048101_manyToOne.cs</DependentUpon>
+    <Compile Include="Migrations\201709252104198_GoogleMaps.cs" />
+    <Compile Include="Migrations\201709252104198_GoogleMaps.Designer.cs">
+      <DependentUpon>201709252104198_GoogleMaps.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -371,8 +371,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709231048101_manyToOne.resx">
-      <DependentUpon>201709231048101_manyToOne.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709252104198_GoogleMaps.resx">
+      <DependentUpon>201709252104198_GoogleMaps.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -295,10 +295,9 @@ C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\W
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\bin\Microsoft.AI.WindowsServer.xml
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\bin\Microsoft.AI.Web.xml
-C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.Migrations.manyToOne.resources
-C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.csproj.GenerateResource.Cache
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.dll
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.pdb
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\bin\WebApplication.dll.config
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.csproj.CoreCompileInputs.cache
-C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.csprojResolveAssemblyReference.cache
+C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.Migrations.GoogleMaps.resources
+C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.csproj.GenerateResource.Cache

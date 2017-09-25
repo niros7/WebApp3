@@ -186,6 +186,8 @@ namespace WebApplication.Controllers
                 post.Title = createPost.Title;
                 post.SubTitle = createPost.SubTitle;
                 post.Description = createPost.Description;
+                post.Lat = createPost.Lat;
+                post.Lng = createPost.Lng;
                 post.CreationDate = DateTime.Now;
                 post.Author = db.Users.Find(User.Identity.GetUserId());
                 db.Posts.Add(post);
