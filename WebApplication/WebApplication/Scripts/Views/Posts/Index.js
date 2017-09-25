@@ -39,3 +39,19 @@ $(".fa").click(function () {
         }
     });
 });
+
+$('#searchButton').prop('disabled', function (i, v) { return true; });
+
+var validate = function () {
+    $('#searchButton').prop('disabled', function (i, v) { return true; });
+
+    if ($("#subTitleSearch").val() ||
+        $("#usernameSearch").val() ||
+        $("#titleSearch").val()) {
+        $('#searchButton').prop('disabled', function (i, v) { return false; });
+    }
+};
+
+$('#subTitleSearch').bind('input propertychange', validate);
+$('#usernameSearch').bind('input propertychange', validate);
+$('#titleSearch').bind('input propertychange', validate);

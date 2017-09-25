@@ -5,11 +5,31 @@
     ViewBag.Title = "Blog";
 }
 
+<div class="container">
+    @using (Html.BeginForm("Search", "Posts", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col">
+                <input name="title" type="text" placeholder="Title..." id="titleSearch" class="form-control" maxlength="100">
+            </div>
+            <div class="col">
+                <input name="username" type="text" placeholder="Username..." id="usernameSearch" class="form-control" maxlength="100">
+            </div>
+            <div class="col">
+                <input name="subTitle" type="text" placeholder="SubTitle..." id="subTitleSearch" class="form-control" maxlength="100">
+            </div>
+            <div class="col">
+                <button type="submit" id="searchButton" class="btn btn-outline-primary">Search</button>
+            </div>
+        </div>
+    }
+</div>
+
 <div class="col-lg-8 col-md-10 mx-auto">
     @foreach (var post in Model)
     {
         <div class="post-preview">
-            <a href="@Url.Action("Details", "Posts", new { id=post.PostTitleId })">
+            <a href="@Url.Action("Details", "Posts", new { id = post.PostTitleId })">
                 <h2 class="post-title">
                     @post.Title
                 </h2>

@@ -1,8 +1,7 @@
 namespace WebApplication.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class manyToOne : DbMigration
     {
         public override void Up()

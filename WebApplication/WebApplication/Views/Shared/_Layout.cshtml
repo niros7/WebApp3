@@ -38,6 +38,12 @@
                             <a class="nav-link" href="/Posts/Create">Create</a>
                         </li>
                     }
+                    @if (Request.IsAuthenticated && this.User.IsInRole("Administrator"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Create</a>
+                        </li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

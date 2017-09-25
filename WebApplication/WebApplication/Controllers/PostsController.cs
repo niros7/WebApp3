@@ -5,9 +5,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using WebApplication;
 using WebApplication.Models;
 using WebApplication.ViewModels;
 
@@ -26,16 +24,17 @@ namespace WebApplication.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var currentUserId = User.Identity.GetUserId();
-                var currentUserTags = db.Posts.Include(path => path.PostTags).Include(p => p.Author).Where(p => p.Author.Id == currentUserId).Select(p => p.PostTags).First();
 
-                var y = db.Posts.Include(path => path.PostTags).Include(p => p.Author).ToList();
+                var currentUserTags = db.Posts.Include(path => path.PostTags).Include(p => p.Author)
+                    .Where(p => p.Author.Id == currentUserId).Select(p => p.PostTags).SelectMany(x => x);
 
                 var bestPosts = db.Posts.Include(post => post.PostTags).Select(p => new
                 {
                     postId = p.Id,
-                    matchCount = currentUserTags.Intersect(p.PostTags).Count()
+                    matchCount = currentUserTags.Intersect(p.PostTags).Count(),
+                    creationDate = p.CreationDate
                 })
-                .OrderByDescending(x => x.matchCount).ToList();
+                .OrderByDescending(x => x.matchCount).ThenByDescending(x => x.creationDate).ToList();
 
                 foreach (var item in bestPosts)
                 {
@@ -49,7 +48,6 @@ namespace WebApplication.Controllers
 
                     }).ToList());
                 }
-
             }
             else
             {
@@ -82,6 +80,67 @@ namespace WebApplication.Controllers
                 return HttpNotFound();
             }
             return View(post);
+        }
+
+
+        [HttpGet]
+        [Route("search")]
+        public ActionResult Search(SearchPost searchParams)
+        {
+            List<PostTitle> postsToReturn = new List<PostTitle>();
+
+            if (string.IsNullOrWhiteSpace(searchParams.Username) &&
+                string.IsNullOrWhiteSpace(searchParams.SubTitle) &&
+                string.IsNullOrWhiteSpace(searchParams.Title))
+            {
+                postsToReturn.AddRange(db.Posts.OrderByDescending(p => p.CreationDate).Select(post => new PostTitle
+                {
+                    Title = post.Title,
+                    SubTitle = post.SubTitle,
+                    CreationDate = post.CreationDate,
+                    UserEmail = post.Author.Email,
+                    PostTitleId = post.Id
+
+                }).ToList());
+            }
+            else
+            {
+                Func<Post, bool> usernamePredicate = (Post p) => { return true; };
+                Func<Post, bool> titlePredicate = (Post p) => { return true; };
+                Func<Post, bool> subTitlePredicate = (Post p) => { return true; };
+
+                if (!string.IsNullOrWhiteSpace(searchParams.Username))
+                {
+                    usernamePredicate = (Post p) => p.Author.Email.Contains(searchParams.Username);
+                }
+
+                if (!string.IsNullOrWhiteSpace(searchParams.Title))
+                {
+                    titlePredicate = (Post p) => p.Title.Contains(searchParams.Title);
+                }
+
+                if (!string.IsNullOrWhiteSpace(searchParams.SubTitle))
+                {
+                    subTitlePredicate = (Post p) => p.SubTitle.Contains(searchParams.SubTitle);
+                }
+
+
+                postsToReturn.AddRange(db.Posts.Include(p => p.Author)
+                    .Where(usernamePredicate)
+                    .Where(titlePredicate)
+                    .Where(subTitlePredicate)
+                    .OrderByDescending(p => p.CreationDate).Select(post => new PostTitle
+                    {
+                        Title = post.Title,
+                        SubTitle = post.SubTitle,
+                        CreationDate = post.CreationDate,
+                        UserEmail = post.Author.Email,
+                        PostTitleId = post.Id
+
+                    }).ToList());
+            }
+
+            return View("Index", postsToReturn);
         }
 
         // GET: Posts/Create

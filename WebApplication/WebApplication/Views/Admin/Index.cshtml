@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WebApplication.ViewModels.PostTitle>
+
+
+@{
+    ViewBag.Title = "Admin";
+}
+
+<div class="col-lg-8 col-md-10 mx-auto">
+    @foreach (var post in Model)
+    {
+        <div class="post-preview">
+            <a href="@Url.Action("Details", "Posts", new { id = post.PostTitleId })">
+                <h2 class="post-title">
+                    @post.Title
+                </h2>
+                <h3 class="post-subtitle">
+                    @post.SubTitle
+                </h3>
+            </a>
+            <p class="post-meta">
+                Posted by
+                <a href="#">@post.UserEmail</a>
+                on @post.CreationDate
+                <i data-id="@post.PostTitleId" class="fa fa-trash" aria-hidden="true"></i>
+            </p>
+        </div>
+    }
+</div>
+<hr>
+<script src="~/Scripts/Views/Posts/Index.js"></script>
