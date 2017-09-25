@@ -12,19 +12,22 @@ namespace WebApplication.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         const int GraphGroupNumber = 5;
         public static int[] RANGES = { 1, 3, 5, 7, 10 };
-        public static string[] Colors = {"#3366CC","#DC3912", "#FF9900" , "#109618" , "#990099" };
+        //public static string[] Colors = {"#3366CC","#DC3912", "#FF9900" , "#109618" , "#990099" };
 
         // Get /Statistics/Graphs
         public ActionResult Graphs()
         {
-            ViewBag.title = "get this title from controller";
+            ViewBag.title = "Statistics Page";
 
             return View();
         }
 
         public ActionResult GroupByTagsGraph()
         {
-            var groupby = db.Posts.GroupBy(g => g.PostTags).ToArray();
+            var groupby = db.Posts.SelectMany(g => g.PostTags)
+                .GroupBy(g => g.TagTitle)
+                .Select(n => new { lable = n.Key, value = n.Count() ,color = ""})
+                .ToList();
             return Json(groupby, JsonRequestBehavior.AllowGet);
         }
 
@@ -59,26 +62,16 @@ namespace WebApplication.Controllers
             }
 
             List<Models.GraphGroup> l = new List<Models.GraphGroup>();
-            //TODO : add the ranges lables the first and last 
-            for (int i = 0; i < GraphGroupNumber; i++)
+
+            GraphGroup firstNode = new GraphGroup("0 - " + RANGES[0].ToString(), RangesArrayConunt[0].ToString(), "");
+            l.Add(firstNode);
+            for (int i = 1; i < GraphGroupNumber-1; i++)
             {
-                GraphGroup groupToAdd = new GraphGroup(RANGES[i].ToString(), RangesArrayConunt[i].ToString(), Colors[i]);
+                GraphGroup groupToAdd = new GraphGroup(RANGES[i-1].ToString() +" - "+RANGES[i].ToString(), RangesArrayConunt[i].ToString(), "");
                 l.Add(groupToAdd);
             }
-
+            GraphGroup lastNode = new GraphGroup(RANGES[GraphGroupNumber-1].ToString() + "+", RangesArrayConunt[GraphGroupNumber - 1].ToString(), "");
             return Json(l, JsonRequestBehavior.AllowGet);
-
-            /*
-            return Json(new[] {
-        new { label = "down3" ,value = "50", color = "#3366CC" },
-        new { label = "3-5",value="1000" , color = "#DC3912" },
-        new { label = "5-7" ,value = "250", color = "#FF9900" },
-        new { label = "7-10" , value="700", color = "#109618" },
-        new { label = "10up" ,value = "900", color = "#990099" }
-    }, JsonRequestBehavior.AllowGet);
-
-    */
-
         }
     }
 }

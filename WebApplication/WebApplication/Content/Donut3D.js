@@ -96,20 +96,21 @@
 
         var slices = d3.select("#" + id).append("g").attr("transform", "translate(" + x + "," + y + ")")
 			.attr("class", "slices");
+        var color = d3.scale.category20();
 
         slices.selectAll(".innerSlice").data(_data).enter().append("path").attr("class", "innerSlice")
-			.style("fill", function (d) { return d3.hsl(d.data.color).darker(0.7); })
+			.style("fill", function (d,i) { return d3.hsl(color(i)).darker(0.7); })
 			.attr("d", function (d) { return pieInner(d, rx + 0.5, ry + 0.5, h, ir); })
 			.each(function (d) { this._current = d; });
 
         slices.selectAll(".topSlice").data(_data).enter().append("path").attr("class", "topSlice")
-			.style("fill", function (d) { return d.data.color; })
+			.style("fill", function (d,i) { return color(i); })
 			.style("stroke", function (d) { return d.data.color; })
 			.attr("d", function (d) { return pieTop(d, rx, ry, ir); })
 			.each(function (d) { this._current = d; });
 
         slices.selectAll(".outerSlice").data(_data).enter().append("path").attr("class", "outerSlice")
-			.style("fill", function (d) { return d3.hsl(d.data.color).darker(0.7); })
+			.style("fill", function (d,i) { return d3.hsl(color(i)).darker(0.7); })
 			.attr("d", function (d) { return pieOuter(d, rx - .5, ry - .5, h); })
 			.each(function (d) { this._current = d; });
 
