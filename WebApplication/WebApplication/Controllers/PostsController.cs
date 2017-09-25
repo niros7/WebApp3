@@ -19,6 +19,8 @@ namespace WebApplication.Controllers
         // GET: Posts
         public ActionResult Index()
         {
+            var isAdmin = User.IsInRole("Administrator");
+
             List<PostTitle> postsToReturn = new List<PostTitle>();
 
             if (User.Identity.IsAuthenticated)

@@ -32,16 +32,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Statistics/Graphs">Graphs</a>
+                    </li>
                     @if (Request.IsAuthenticated)
                     {
                         <li class="nav-item">
                             <a class="nav-link" href="/Posts/Create">Create</a>
                         </li>
                     }
-                    @if (Request.IsAuthenticated && this.User.IsInRole("Administrator"))
+                    @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin">Create</a>
+                            <a class="nav-link" href="/admin">Admin</a>
                         </li>
                     }
                 </ul>
