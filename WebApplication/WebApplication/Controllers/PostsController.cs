@@ -233,6 +233,7 @@ namespace WebApplication.Controllers
         {
             Post post = db.Posts.Include(p => p.Comments).Where(p => p.Id == id).Single();
             db.Commnets.RemoveRange(post.Comments);
+            db.Tags.RemoveRange(post.PostTags);
             db.Posts.Remove(post);
             db.SaveChanges();
 
