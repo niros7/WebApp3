@@ -301,3 +301,4 @@ C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\W
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.csproj.CoreCompileInputs.cache
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.Migrations.GoogleMaps.resources
 C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.csproj.GenerateResource.Cache
+C:\Batel\לימודים\שנה ב\סמסטר קיץ\web\UpdatedProject\WebApp3\WebApplication\WebApplication\obj\Debug\WebApplication.csprojResolveAssemblyReference.cache

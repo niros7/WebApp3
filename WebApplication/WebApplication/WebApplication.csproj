@@ -261,6 +261,7 @@
     <Content Include="Scripts\Views\Posts\Create.js" />
     <Content Include="Scripts\Views\Posts\Details.js" />
     <Content Include="Scripts\Views\Posts\Index.js" />
+    <Content Include="Scripts\Views\Statistics\Map.js" />
     <Content Include="Vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="Vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="Vendor\bootstrap\css\bootstrap-reboot.css" />
