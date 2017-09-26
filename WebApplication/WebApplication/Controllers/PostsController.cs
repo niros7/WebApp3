@@ -82,6 +82,18 @@ namespace WebApplication.Controllers
             return View(post);
         }
 
+        [HttpGet]
+        [Route("location")]
+        public IEnumerable<Location> Locations()
+        {
+            var postsLocations = db.Posts.Where(p => p.Lng.HasValue && p.Lat.HasValue).Select(p => new Location
+            {
+                Lat = p.Lat.Value,
+                Lng = p.Lng.Value
+            });
+
+            return postsLocations;
+        }
 
         [HttpGet]
         [Route("search")]
