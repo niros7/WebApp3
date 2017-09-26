@@ -121,24 +121,28 @@ svg text.percent{
 
 
         var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var locations;
+        var markers;
 
-        var markers = locations.map(function (location, i) {
-            return new google.maps.Marker({
-                position: location,
-                label: labels[i % labels.length]
-            });
+        $.ajax({
+            url: "http://localhost:56587/posts/Location", success: function (result) {
+                locations = result;
+                markers = locations.map(function (location, i) {
+                    return new google.maps.Marker({
+                        position: new google.maps.LatLng(parseFloat(location.lat), parseFloat(location.lng)),
+                        label: labels[i % labels.length]
+                    });
+                });
+            }
         });
+
+         
 
         // Add a marker clusterer to manage the markers.
         var markerCluster = new MarkerClusterer(map, markers,
             { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
         }
 
-        $.ajax({
-            url: "http://localhost:56587/Location", success: function (result) {
-                var locations = result;
-            }
-        });
     /*var locations = [
         //todo: instead of hard coded alerts read location from server
         { lat: 31.97, lng: 34.77 },

@@ -19,6 +19,8 @@ namespace WebApplication.Controllers
         // GET: Posts
         public ActionResult Index()
         {
+            var userRole = User.IsInRole("Administrator");
+
             List<PostTitle> postsToReturn = new List<PostTitle>();
 
             if (User.Identity.IsAuthenticated)
@@ -84,15 +86,15 @@ namespace WebApplication.Controllers
 
         [HttpGet]
         [Route("location")]
-        public IEnumerable<Location> Locations()
+        public ActionResult Locations()
         {
             var postsLocations = db.Posts.Where(p => p.Lng.HasValue && p.Lat.HasValue).Select(p => new Location
             {
                 Lat = p.Lat.Value,
                 Lng = p.Lng.Value
-            });
+            }).ToList();
 
-            return postsLocations;
+            return Json(postsLocations, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
